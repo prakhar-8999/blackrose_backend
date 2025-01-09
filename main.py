@@ -91,7 +91,6 @@ async def generate_random_numbers():
     try:
         async with aiosqlite.connect(DATABASE_PATH) as db:
             timestamp = datetime.now().isoformat()
-
             value = random.random()
             await db.execute(
                 "INSERT INTO random_numbers (timestamp, value) VALUES (?, ?)",
@@ -140,8 +139,8 @@ async def websocket_endpoint(websocket: WebSocket, token: str):
                     row = await cursor.fetchone()
                     if row:
                         await websocket.send_json({
-                            "timestamp": row[0],
-                            "value": row[1]
+                            "timestamp": datetime.now().isoformat(),
+                            "value": random.random()
                         })
                     else:
                         print("Cannot generate timestamp!")
