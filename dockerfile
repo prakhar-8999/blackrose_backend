@@ -3,7 +3,7 @@ FROM python:3.12
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /blackrose_backend
+WORKDIR /app
 
-COPY requirements.txt .
+COPY . .
 RUN pip install --upgrade pip && pip install -r requirements.txt

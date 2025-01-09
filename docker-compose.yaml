@@ -4,8 +4,6 @@ services:
     container_name: blackrose
     restart: always
     command: uvicorn main:app --host 0.0.0.0 --port 8000
-    volumes:
-      - ../:/blackrose_backend
     ports:
       - "8088:8000"
     networks:
